@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
+export default function About(props) {
 
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
 
-  })
-  const [btntext, setBtnText] = useState("Enable Dark Mode")
-
-  const toggleStyle = () => {
-    if (myStyle.color === "black") {
-      setMyStyle({
-        color: "white",
-        backgroundColor: "black",
-        border: "1px solid white"
-      })
-      setBtnText("Enable Light Mode")
-
-    }
-    else {
-      setMyStyle({
-        color: "black",
-        backgroundColor: "white"
-      })
-      setBtnText("Enable Dark Mode")
-    }
+  // })
+  let myStyle = {
+color: props.mode === 'dark' ? 'white' : '#042743',
+ backgroundColor: props.mode === 'dark' ? 'rgb(36 74 104)': 'white',
+//  border:  '2px solid',
+ borderColor: props.mode === 'dark' ? 'white' : '#042743',
   }
 
   return (
-    <div className="container my-3" style={myStyle}>
+    <div className="container my-3" style={{color: props.mode === 'dark' ? 'white' : '#042743'}}>
       <h2>About Us</h2>
       <div className="accordion" id="accordionExample" style={myStyle}>
 
@@ -41,7 +27,7 @@ export default function About() {
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
             >
-              Analyze Your Text
+              <strong>Analyze Your Text</strong>
             </button>
           </h2>
           <div
@@ -50,8 +36,8 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              TextUtils aapke text ko analyze karne ke liye ek utility hai.
-              Aap uppercase, lowercase, word count, aur character count kar sakte ho.
+              TextUtils gives you a way to analyze your text quickly and efficiently. Be it word count, character count or
+               uppercase, lowercase, word count etc .
             </div>
           </div>
         </div>
@@ -65,7 +51,7 @@ export default function About() {
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
             >
-              Free To Use
+              <strong>Free To Use</strong>
             </button>
           </h2>
           <div
@@ -74,7 +60,8 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              Ye ek free tool hai jo kisi bhi user ke liye available hai.
+              Textutils is a free character counter tool that provides instant character count and word count statistics for a given text.
+              Textutils reports the number of words and characters. Thus it is suitable for writing text with word or character limit.
             </div>
           </div>
         </div>
@@ -88,7 +75,7 @@ export default function About() {
               data-bs-toggle="collapse"
               data-bs-target="#collapseThree"
             >
-              Browser Compatible
+              <strong>Browser Compatible</strong>
             </button>
           </h2>
           <div
@@ -97,15 +84,15 @@ export default function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body" style={myStyle}>
-              TextUtils modern browsers ke saath compatible hai, jaise Chrome, Firefox, Edge.
+              This word counter softerware works in any web browser such as chrome , firefox, internet explorer, safari, opera. It suits to count characters in facebook, blog, books,excel document, essays, etc.
             </div>
           </div>
         </div>
 
       </div>
-      <div className="container my-3">
+      {/* <div className="container my-3">
         <button type="button" onClick={toggleStyle} className="btn btn-primary">{btntext}</button>
-      </div>
+      </div> */}
     </div>
   );
 }
